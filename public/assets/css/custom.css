@@ -1392,8 +1392,8 @@ svg {
 }
 
 .auth-story-logo img {
-    width: 42px;
-    height: 42px;
+    width: 50px;
+    height: 100%;
     padding: 5px;
     background: rgba(255, 255, 255, 0.08);
     border-radius: 11px;
