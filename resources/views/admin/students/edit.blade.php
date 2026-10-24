@@ -24,9 +24,9 @@
     </div>
 
     <div class="form-card">
-        <form method="POST" action="{{ route('admin.students.update', $student) }}">
+        <form method="POST" action="{{ route('admin.students.update', $student) }}" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
+            @method('PATCH')
 
             <div class="form-section">
                 <div class="row-between" style="align-items:flex-start;margin-bottom:22px">
@@ -81,6 +81,36 @@
                             <span class="muted" style="font-size:10px">Joined {{ $student->created_at->format('d M Y') }}</span>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="form-section-head">
+                    <h2>Profile photo</h2>
+                    <p>Upload a profile picture for this student. If none is uploaded, initials will be shown.</p>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="profile_photo">Profile photo</label>
+                        <input id="profile_photo" class="form-control" type="file" name="profile_photo" accept="image/*">
+                        @error('profile_photo')
+                            <p class="form-error">{{ $message }}</p>
+                        @enderror
+                        <p class="muted" style="font-size:10px;margin-top:6px">JPG, PNG, GIF, WEBP up to 2MB.</p>
+                    </div>
+                    @if ($student->profile_photo_path)
+                        <div class="form-field">
+                            <label>Current photo</label>
+                            <div style="display:flex;align-items:center;gap:12px;min-height:48px;padding:10px 14px;background:var(--ntc-pale);border-radius:11px">
+                                @include('shared.avatar', ['user' => $student, 'class' => 'avatar'])
+                                <label style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ntc-slate)">
+                                    <input type="checkbox" name="remove_profile_photo" value="1">
+                                    Remove current photo
+                                </label>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
 

@@ -43,7 +43,8 @@ class MaterialViewerController extends Controller
 
         return response()->file($path, [
             'Content-Type' => $contentType,
-            'Content-Disposition' => 'inline; filename="'.basename($material->file_path).'"',
+            'Content-Disposition' => 'inline',
+            'X-Content-Type-Options' => 'nosniff',
         ]);
     }
 

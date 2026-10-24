@@ -8,7 +8,7 @@
 
     <header class="auth-header">
         <a href="{{ url('/') }}" class="ntc-brand" aria-label="Namitembo Technical College home">
-            <img src="{{ asset('images/namitembo-logo.svg') }}" alt="">
+                    <img src="{{ asset('images/namitembo-logo.png') }}" alt="Namitembo Technical College">
             <span class="ntc-brand-name">
                 <strong>Namitembo</strong>
                 <span>Technical College</span>
@@ -24,7 +24,7 @@
         <div class="auth-shell">
             <aside class="auth-story">
                 <div class="auth-story-logo">
-                    <img src="{{ asset('images/namitembo-logo.svg') }}" alt="">
+            <img src="{{ asset('images/namitembo-logo.png') }}" alt="Namitembo Technical College">
                     <span>NTC Digital Campus</span>
                 </div>
 

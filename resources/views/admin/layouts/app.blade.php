@@ -11,7 +11,7 @@
 
         <aside class="sidebar" data-sidebar aria-label="Admin navigation">
             <a href="{{ route('admin.dashboard') }}" class="ntc-brand">
-                <img src="{{ asset('images/namitembo-logo.svg') }}" alt="">
+                <img src="{{ asset('images/namitembo-logo.png') }}" alt="">
                 <span class="ntc-brand-name">
                     <strong>Namitembo</strong>
                     <span>Admin workspace</span>

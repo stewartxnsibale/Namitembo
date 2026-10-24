@@ -391,7 +391,8 @@ svg {
 
 .landing-page {
     min-height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     background:
         radial-gradient(circle at 88% 7%, rgba(226, 190, 69, 0.18), transparent 27%),
         radial-gradient(circle at 8% 58%, rgba(11, 31, 48, 0.08), transparent 30%),
@@ -1264,11 +1265,12 @@ svg {
 .auth-page {
     position: relative;
     min-height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     background:
-        radial-gradient(circle at 14% 16%, rgba(226, 190, 69, 0.15), transparent 27%),
-        radial-gradient(circle at 88% 84%, rgba(255, 255, 255, 0.1), transparent 25%),
-        linear-gradient(145deg, #15364f 0%, var(--ntc-navy) 58%, #071725 100%);
+        radial-gradient(circle at 14% 16%, rgba(226, 190, 69, 0.12), transparent 27%),
+        radial-gradient(circle at 88% 84%, rgba(11, 31, 48, 0.06), transparent 25%),
+        linear-gradient(180deg, #f8fbff 0%, #eef5fa 100%);
 }
 
 .auth-page::before,
@@ -1306,24 +1308,30 @@ svg {
 }
 
 .auth-header .ntc-brand {
-    color: var(--ntc-white);
+    color: var(--ntc-navy);
 }
 
 .auth-header .ntc-brand-name span {
-    color: rgba(255, 255, 255, 0.48);
+    color: var(--ntc-slate);
 }
 
 .auth-back {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: rgba(255, 255, 255, 0.62);
+    padding: 9px 16px;
+    color: var(--ntc-navy);
+    border-radius: 999px;
+    border: 1px solid rgba(11, 31, 48, 0.16);
+    background: rgba(255, 255, 255, 0.8);
     font-size: 12px;
     font-weight: 700;
+    transition: all 160ms ease;
 }
 
 .auth-back:hover {
-    color: var(--ntc-gold);
+    color: var(--ntc-navy);
+    border-color: rgba(11, 31, 48, 0.36);
 }
 
 .auth-main {
@@ -1342,10 +1350,10 @@ svg {
     width: min(960px, 100%);
     min-height: 570px;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.98);
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    background: #ffffff;
+    border: 1px solid rgba(11, 31, 48, 0.08);
     border-radius: 28px;
-    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.32);
+    box-shadow: 0 40px 90px rgba(11, 31, 48, 0.12);
 }
 
 .auth-story {
@@ -1640,9 +1648,9 @@ textarea.form-control {
 .auth-page-footer {
     position: relative;
     z-index: 2;
-    padding: 0 24px 24px;
-    color: rgba(255, 255, 255, 0.33);
-    font-size: 10px;
+    padding: 18px 24px 26px;
+    color: var(--ntc-slate);
+    font-size: 11px;
     text-align: center;
 }
 

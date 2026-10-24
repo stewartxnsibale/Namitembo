@@ -56,7 +56,7 @@
         </aside>
 
         <div class="form-card" style="max-width:none">
-            <form method="POST" action="{{ route('profile.update') }}">
+            <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -80,6 +80,29 @@
                         @error('email')
                             <p class="form-error">{{ $message }}</p>
                         @enderror
+                    </div>
+
+                    <div class="form-row" style="margin-top:16px">
+                        <div class="form-field">
+                            <label for="profile_photo">Profile photo</label>
+                            <input id="profile_photo" class="form-control" type="file" name="profile_photo" accept="image/*">
+                            @error('profile_photo')
+                                <p class="form-error">{{ $message }}</p>
+                            @enderror
+                            <p class="muted" style="font-size:10px;margin-top:6px">JPG, PNG, GIF, WEBP up to 2MB.</p>
+                        </div>
+                        @if ($user->profile_photo_path)
+                            <div class="form-field">
+                                <label>Current photo</label>
+                                <div style="display:flex;align-items:center;gap:12px;min-height:48px;padding:10px 14px;background:var(--ntc-pale);border-radius:11px">
+                                    @include('shared.avatar', ['user' => $user, 'class' => 'avatar'])
+                                    <label style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ntc-slate)">
+                                        <input type="checkbox" name="remove_profile_photo" value="1">
+                                        Remove current photo
+                                    </label>
+                                </div>
+                            </div>
+                        @endif
                     </div>
 
                     <div class="form-actions">

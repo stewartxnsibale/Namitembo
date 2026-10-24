@@ -65,6 +65,8 @@ class StudentController extends Controller
             ],
             'department' => ['required', Rule::in(self::DEPARTMENTS)],
             'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+            'profile_photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png,gif,webp', 'max:2048'],
+            'remove_profile_photo' => ['nullable', 'boolean'],
         ]);
 
         $student->name = $validated['name'];
@@ -77,6 +79,26 @@ class StudentController extends Controller
 
         if (! empty($validated['password'])) {
             $student->password = $validated['password'];
+        }
+
+        if ($request->boolean('remove_profile_photo')) {
+            if ($student->profile_photo_path) {
+                $disk = Storage::disk('public');
+                if ($disk->exists($student->profile_photo_path)) {
+                    $disk->delete($student->profile_photo_path);
+                }
+                $student->profile_photo_path = null;
+            }
+        } elseif ($request->hasFile('profile_photo')) {
+            if ($student->profile_photo_path) {
+                $disk = Storage::disk('public');
+                if ($disk->exists($student->profile_photo_path)) {
+                    $disk->delete($student->profile_photo_path);
+                }
+            }
+
+            $path = $request->file('profile_photo')->store('profile-photos', 'public');
+            $student->profile_photo_path = $path;
         }
 
         $student->save();

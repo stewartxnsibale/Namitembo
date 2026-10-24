@@ -11,7 +11,7 @@
         <div class="landing-container">
             <nav class="site-nav" aria-label="Main navigation">
                 <a href="{{ url('/') }}" class="ntc-brand" aria-label="Namitembo Technical College home">
-                    <img src="{{ asset('images/namitembo-logo.svg') }}" alt="">
+                    <img src="{{ asset('images/namitembo-logo.png') }}" alt="Namitembo Technical College">
                     <span class="ntc-brand-name">
                         <strong>Namitembo</strong>
                         <span>Technical College</span>
@@ -92,7 +92,7 @@
                         <div class="hero-dashboard">
                             <div class="dash-top">
                                 <div class="dash-brand">
-                                    <img src="{{ asset('images/namitembo-logo.svg') }}" alt="">
+                                    <img src="{{ asset('images/namitembo-logo.png') }}" alt="Namitembo Technical College">
                                     NTC Digital Campus
                                 </div>
                                 <div class="dash-dots"><span></span><span></span><span></span></div>
@@ -316,7 +316,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="{{ url('/') }}" class="ntc-brand">
-                        <img src="{{ asset('images/namitembo-logo.svg') }}" alt="">
+                        <img src="{{ asset('images/namitembo-logo.png') }}" alt="Namitembo Technical College">
                         <span class="ntc-brand-name">
                             <strong>Namitembo</strong>
                             <span>Technical College</span>

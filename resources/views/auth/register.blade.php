@@ -23,34 +23,7 @@
                 <p class="form-error">{{ $message }}</p>
             @enderror
         </div>
-
-        <div class="form-row">
-            <div class="form-field">
-                <label for="role">Account type</label>
-                <select id="role" name="role" class="form-control" required>
-                    <option value="student" @selected(old('role', 'student') === 'student')>Student</option>
-                    <option value="admin" @selected(old('role') === 'admin')>Administrator</option>
-                </select>
-                @error('role')
-                    <p class="form-error">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <div class="form-field">
-                <label for="department">Department</label>
-                <select id="department" name="department" class="form-control" required>
-                    <option value="ICT" @selected(old('department') === 'ICT')>ICT</option>
-                    <option value="FBW" @selected(old('department') === 'FBW')>FBW</option>
-                    <option value="CJ" @selected(old('department') === 'CJ')>CJ</option>
-                    <option value="TFD" @selected(old('department') === 'TFD')>TFD</option>
-                    <option value="BL" @selected(old('department') === 'BL')>BL</option>
-                </select>
-                @error('department')
-                    <p class="form-error">{{ $message }}</p>
-                @enderror
-            </div>
-        </div>
-
+        
         <div class="form-field">
             <label for="password">Password</label>
             <div style="position:relative">

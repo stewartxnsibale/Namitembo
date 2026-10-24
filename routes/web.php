@@ -26,12 +26,17 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 
         Route::get('/students', [AdminStudentController::class, 'index'])->name('students.index');
         Route::get('/students/{student}/edit', [AdminStudentController::class, 'edit'])->name('students.edit');
-        Route::patch('/students/{student}', [AdminStudentController::class, 'update'])->name('students.update');
+        Route::match(['patch', 'put'], '/students/{student}', [AdminStudentController::class, 'update'])->name('students.update');
         Route::delete('/students/{student}', [AdminStudentController::class, 'destroy'])->name('students.destroy');
 
         Route::get('/materials', [AdminMaterialController::class, 'index'])->name('materials.index');
         Route::get('/materials/create', [AdminMaterialController::class, 'create'])->name('materials.create');
         Route::post('/materials', [AdminMaterialController::class, 'store'])->name('materials.store');
+        // delete material route
+        Route::delete('/materials/{material}', [AdminMaterialController::class, 'destroy'])->name('materials.destroy');
+        Route::get('/materials/{material}', [AdminMaterialController::class, 'show'])->name('materials.show');
+        Route::get('/materials/{material}/edit', [AdminMaterialController::class, 'edit'])->name('materials.edit');
+        Route::match(['patch', 'put'], '/materials/{material}', [AdminMaterialController::class, 'update'])->name('materials.update');
         Route::get('/materials/{material}/file', [MaterialViewerController::class, 'file'])->name('materials.file');
     });
 

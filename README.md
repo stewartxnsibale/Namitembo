@@ -1,59 +1,214 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Namitembo Technical College - E-Library Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Laravel 12 based digital campus management system for Namitembo Technical College. The application provides role-based access for Administrators and Students, a centralized resource library, profile management with avatars, and a clean, branded user interface.
 
-## About Laravel
+## Table of Contents
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- [Overview](#overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Requirements](#requirements)
+- [Installation & Setup](#installation--setup)
+- [Database Migrations](#database-migrations)
+- [Default Roles & Access](#default-roles--access)
+- [Application Structure](#application-structure)
+- [Usage Guide](#usage-guide)
+- [File Uploads & Storage](#file-uploads--storage)
+- [Assets & Frontend](#assets--frontend)
+- [Testing](#testing)
+- [License](#license)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Overview
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Namitembo E-Library is designed to digitize resource sharing between departments. Administrators manage students, upload learning materials, and maintain the library. Students can browse resources filtered by department and type, preview materials in-browser (PDFs and videos), download files, and manage their own profiles with optional profile photos.
 
-## Learning Laravel
+## Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Authentication & Authorization
+- Email/password authentication (Laravel Breeze style flows)
+- Role-based access control (`admin` and `student`) with middleware protection
+- Email verification support
+- Password update and account deletion from profile page
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Admin Panel
+- Dashboard with overview of library activity
+- Student Management: View, edit, delete student accounts; update student profile photos
+- Resource Library Management: Upload, view, edit, delete learning materials
+- Filter resources by department, type, and search
+- Preview resources in modal (PDF via iframe, video via HTML5 video tag)
+- Manage own admin profile and photo
 
-## Laravel Sponsors
+### Student Portal
+- Personalized dashboard with resources relevant to their department
+- Library browsing with search and type filters (PDF, video, presentation, document, image)
+- Resource detail view with preview and download options
+- In-browser preview modal for supported types
+- Profile management with photo upload/remove, password change
+- Avatar system with initials fallback when no photo is uploaded
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### UI/UX
+- Branded design with Namitembo colors (navy, gold, etc.)
+- Responsive layouts for admin and student areas
+- Icon system and reusable components
+- Custom CSS and JS in `public/assets/`
 
-### Premium Partners
+## Tech Stack
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- **Framework**: [Laravel 12](https://laravel.com/)
+- **PHP**: ^8.2
+- **Authentication**: Laravel Breeze
+- **Frontend**: Blade templates, Bootstrap (Rizz theme assets), Alpine.js, Vite
+- **Storage**: Local/public disk for uploads
+- **Database**: MySQL/SQLite/Postgres (configurable via `.env`)
 
-## Contributing
+## Requirements
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- PHP >= 8.2 with extensions: `mbstring`, `openssl`, `pdo`, `tokenizer`, `xml`, `ctype`, `json`, `fileinfo`
+- Composer
+- Node.js & NPM
+- A web server (Apache/Nginx) or use `php artisan serve`
+- Database server
 
-## Code of Conduct
+## Installation & Setup
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. **Clone the repository**
+```bash
+git clone <repository-url>
+cd namitembo_e_library
+```
 
-## Security Vulnerabilities
+2. **Install PHP dependencies**
+```bash
+composer install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+3. **Install Node dependencies**
+```bash
+npm install
+```
+
+4. **Environment setup**
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+Update `.env` with your database credentials:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=namitembo_e_library
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
+
+5. **Run migrations**
+```bash
+php artisan migrate
+```
+
+6. **Create storage link**
+```bash
+php artisan storage:link
+```
+
+7. **Build assets (production) or run dev server**
+```bash
+# Development
+npm run dev
+
+# Production
+npm run build
+```
+
+8. **Start the application**
+```bash
+php artisan serve
+```
+
+Visit `http://localhost:8000` in your browser.
+
+## Database Migrations
+
+Key migrations included:
+- `0001_01_01_000000_create_users_table.php` - Users table with `role` (student/admin) and `department` (ICT, FBW, CJ, TFD, BL)
+- `2026_10_18_000000_create_materials_table.php` - Materials/resources table
+- `2026_10_18_112059_add_profile_photo_to_users_table.php` - Adds `profile_photo_path` to users
+- Additional migrations for roles/departments and sessions/password resets
+
+## Default Roles & Access
+
+After seeding or manual setup, create users with appropriate roles:
+- **Admin**: Access to `/admin/*` - manage students, manage library, preview all resources
+- **Student**: Access to `/student/*` - view department-specific resources, manage own profile
+
+Middleware enforces role-based access. Unauthenticated users can access welcome, login, and register pages.
+
+## Application Structure
+
+```
+app/
+├── Http/Controllers/
+│   ├── Admin/           # Admin controllers (Dashboard, Student, Material)
+│   ├── Student/         # Student controllers
+│   ├── ProfileController.php
+│   ├── MaterialViewerController.php
+│   └── Auth/            # Breeze auth controllers
+├── Models/
+│   ├── User.php         # Has role, department, profile_photo_path
+│   └── Material.php
+database/migrations/     # Schema definitions
+resources/
+├── views/
+│   ├── admin/           # Admin panel views
+│   ├── student/         # Student portal views
+│   ├── auth/            # Auth views
+│   ├── profile/         # Profile edit
+│   ├── shared/          # Shared components (avatar, modal, icons)
+│   └── layouts/         # Layout templates
+public/
+├── assets/              # CSS/JS/libs/fonts from theme
+└── images/              # Logos and images
+```
+
+## Usage Guide
+
+### For Administrators
+1. Log in as admin → redirected to Admin Dashboard
+2. **Manage Students**: Go to Students → view list, edit details, upload/remove profile photos, delete accounts
+3. **Manage Library**: Go to Resource Library → Upload Material (title, department, type, description, file), Preview, Edit, or Delete resources
+4. **Profile**: Update name/email/photo from Profile page
+
+### For Students
+1. Log in as student → redirected to Student Dashboard (shows department resources)
+2. **Browse Library**: Filter by type or search; click Preview to view in modal or Open to view details
+3. **View/Download**: PDFs/videos can be previewed in-browser; other file types may need to be downloaded and opened locally
+4. **Profile**: Update personal details, change password, upload/remove profile photo
+
+## File Uploads & Storage
+
+- **Materials**: Stored in `storage/app/public/materials/` (max 100MB)
+- **Profile Photos**: Stored in `storage/app/public/profile-photos/` (images, max 2MB)
+- Run `php artisan storage:link` to make files accessible via `/storage/`
+
+The `MaterialViewerController` serves files with appropriate MIME types and inline disposition for browser preview where supported.
+
+## Assets & Frontend
+
+- Theme assets loaded from `public/assets/` (CSS, JS, fonts, icons)
+- Vite configured for `resources/css/app.css` and `resources/js/app.js`
+- Custom styles in `public/assets/css/custom.css`
+- Preview modal handled by `public/assets/js/custom.js`
+- Logos stored in `public/images/` (PNG/SVG)
+
+## Testing
+
+Run tests with Pest/PHPUnit:
+```bash
+php artisan test
+```
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

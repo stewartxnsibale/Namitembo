@@ -94,20 +94,32 @@
                         <h3>{{ $material->title }}</h3>
                         <p>{{ $material->description }}</p>
                         <div class="resource-card-foot">
-                            <span class="resource-date">{{ ucfirst($material->type) }}</span>
-                            <button
-                                type="button"
-                                class="btn btn-navy btn-sm"
-                                data-preview-url="{{ route('admin.materials.file', $material) }}"
-                                data-preview-type="{{ $material->type }}"
-                                data-preview-title="{{ $material->title }}"
-                                data-preview-description="{{ \Illuminate\Support\Str::limit($material->description, 150) }}"
-                                data-preview-open-url="{{ route('admin.materials.file', $material) }}"
-                                data-preview-download-url="{{ route('admin.materials.file', $material) }}"
-                            >
-                                <svg class="icon icon-sm"><use href="#icon-eye"></use></svg>
-                                Preview
-                            </button>
+                            <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+                                <button
+                                    type="button"
+                                    class="btn btn-outline btn-sm"
+                                    data-preview-url="{{ route('admin.materials.file', $material) }}"
+                                    data-preview-type="{{ $material->type }}"
+                                    data-preview-title="{{ $material->title }}"
+                                    data-preview-description="{{ \Illuminate\Support\Str::limit($material->description, 150) }}"
+                                    data-preview-open-url="{{ route('admin.materials.file', $material) }}"
+                                    data-preview-download-url="{{ route('admin.materials.file', $material) }}"
+                                >
+                                    <svg class="icon icon-sm"><use href="#icon-eye"></use></svg>
+                                    Preview
+                                </button>
+                                <a href="{{ route('admin.materials.edit', $material) }}" class="btn btn-ghost btn-sm" title="Edit">
+                                    <svg class="icon icon-sm"><use href="#icon-edit"></use></svg>
+                                    Edit
+                                </a>
+                            </div>
+                            <form method="POST" action="{{ route('admin.materials.destroy', $material) }}" data-confirm="Delete {{ $material->title }}? This action cannot be undone.">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-ghost btn-sm" style="color:var(--ntc-danger)" title="Delete">
+                                    <svg class="icon icon-sm"><use href="#icon-trash"></use></svg>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </article>
