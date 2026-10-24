@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title id="title">Namitembo Technical College</title>
+  <desc id="desc">Navy and gold college crest with an open book and N monogram</desc>
+  <defs>
+    <linearGradient id="crest-navy" x1="8" y1="6" x2="88" y2="92" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#15364f"/>
+      <stop offset="1" stop-color="#0b1f30"/>
+    </linearGradient>
+    <linearGradient id="crest-gold" x1="28" y1="20" x2="72" y2="84" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f0d477"/>
+      <stop offset=".55" stop-color="#e2be45"/>
+      <stop offset="1" stop-color="#b8973b"/>
+    </linearGradient>
+  </defs>
+  <path d="M48 4 84 16v30c0 21.8-14.4 37.4-36 46C26.4 83.4 12 67.8 12 46V16L48 4Z" fill="url(#crest-navy)"/>
+  <path d="M48 8.8 80 19.5V46c0 19.1-12.4 33.2-32 41.4C28.4 79.2 16 65.1 16 46V19.5L48 8.8Z" fill="none" stroke="url(#crest-gold)" stroke-width="2.4"/>
+  <path d="M31 31.5h11.5c4.2 0 7.2 2.2 7.2 6.2v24.8c-1.9-2.1-4.3-3.2-7.2-3.2H31V31.5Zm34 0H53.5c-4.2 0-7.2 2.2-7.2 6.2v24.8c1.9-2.1 4.3-3.2 7.2-3.2H65V31.5Z" fill="none" stroke="url(#crest-gold)" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M47.8 46.5c1.8-2.1 4.3-3.1 7.4-3.1" fill="none" stroke="url(#crest-gold)" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M38.4 26.5 48 20l9.6 6.5" fill="none" stroke="#f0d477" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M48 20v9.4" stroke="#f0d477" stroke-width="2.2" stroke-linecap="round"/>
+</svg>
