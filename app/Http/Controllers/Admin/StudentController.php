@@ -89,7 +89,7 @@ class StudentController extends Controller
                 }
                 $student->profile_photo_path = null;
             }
-        } elseif ($request->hasFile('profile_photo')) {
+        } elseif ($request->hasFile('profile_photo_path')) {
             if ($student->profile_photo_path) {
                 $disk = Storage::disk('public');
                 if ($disk->exists($student->profile_photo_path)) {
@@ -97,7 +97,7 @@ class StudentController extends Controller
                 }
             }
 
-            $path = $request->file('profile_photo')->store('profile-photos', 'public');
+            $path = $request->file('profile_photo_path')->store('profile-photos', 'public');
             $student->profile_photo_path = $path;
         }
 

@@ -53,7 +53,7 @@ class ProfileController extends Controller
                 }
                 $user->profile_photo_path = null;
             }
-        } elseif ($request->hasFile('profile_photo')) {
+        } elseif ($request->hasFile('profile_photo_path')) {
             if ($user->profile_photo_path) {
                 $disk = Storage::disk('public');
                 if ($disk->exists($user->profile_photo_path)) {
@@ -61,7 +61,7 @@ class ProfileController extends Controller
                 }
             }
 
-            $path = $request->file('profile_photo')->store('profile-photos', 'public');
+            $path = $request->file('profile_photo_path')->store('profile-photos', 'public');
             $user->profile_photo_path = $path;
         }
 
