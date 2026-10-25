@@ -172,8 +172,10 @@ svg {
 }
 
 .ntc-brand img {
-    width: 44px;
-    height: 44px;
+    width: 70px;
+    height: 100%;
+    background: #ffffff;
+    border-radius: 7px;
 }
 
 .ntc-brand-name {
@@ -601,10 +603,10 @@ svg {
 }
 
 .dash-brand img {
-    width: 30px;
-    height: 30px;
+    width: 70px;
+    height: 100%;
     padding: 3px;
-    background: rgba(255, 255, 255, 0.1);
+    background: #ffffff;;
     border-radius: 8px;
 }
 
@@ -3938,8 +3940,8 @@ textarea.form-control {
     }
 
     .site-nav .ntc-brand img {
-        width: 38px;
-        height: 38px;
+        width: 70px;
+        height: 100%;
     }
 
     .site-nav .ntc-brand-name strong {
