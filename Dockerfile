@@ -41,6 +41,8 @@ COPY . .
 # Add Vite's compiled CSS, JS and manifest
 COPY --from=frontend /app/public/build ./public/build
 
+RUN php artisan storage:link
+
 RUN chown -R www-data:www-data storage bootstrap/cache
 
 ENV APP_ENV=production
