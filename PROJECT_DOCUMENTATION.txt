@@ -1,0 +1,226 @@
+NAMITEMBO E-LIBRARY MANAGEMENT SYSTEM
+====================================
+
+Project Name:
+Namitembo Technical College - E-Library Management System
+
+Overview:
+This project is a Laravel-based digital campus resource management application for Namitembo Technical College. It helps the institution manage learning materials and provide students with a secure, organized library experience.
+
+The system is designed to support two main user groups:
+- Administrators: manage users, library resources, profiles, and platform activity.
+- Students: browse department-specific materials, preview or download files, and manage their own profile.
+
+The application centralizes academic content, making it easier for staff to upload and maintain learning resources while allowing students to access them from one place.
+
+Project Purpose:
+The project exists to digitize and simplify the sharing of educational resources between departments and across the college. Instead of relying on scattered files or physical sharing methods, the system provides a structured digital library where resources are categorized, searchable, and accessible based on user role.
+
+Core Features:
+1. Role-based access control
+   - Admin and student roles are defined.
+   - Certain routes and actions are restricted to authorized users.
+   - Middleware enforces access rules.
+
+2. Student management
+   - Admins can view, edit, and remove student accounts.
+   - Student profile data can be managed.
+   - Profile photos can be uploaded or removed.
+
+3. Resource library management
+   - Admins can upload learning materials such as PDFs, videos, documents, presentations, and images.
+   - Resources can be edited, previewed, filtered, and deleted.
+   - Materials can be categorized by department, type, and search terms.
+
+4. Student portal
+   - Students see a dashboard with content relevant to their department.
+   - Students can browse, search, and filter library items.
+   - Students can preview supported file types in-browser or download the file.
+
+5. Profile management
+   - Users can update personal details.
+   - Users can change passwords.
+   - Profile photos can be uploaded and managed.
+
+6. File preview support
+   - PDF files can be previewed inline.
+   - Videos can be displayed in browser.
+   - Other document types can be downloaded or opened locally.
+
+7. Responsive web interface
+   - The app uses Blade views, Tailwind styling, and JavaScript-driven UI components.
+   - The interface is designed to work well on desktop and mobile layouts.
+
+Technology Stack:
+- PHP 8.2+
+- Laravel 12
+- MySQL / SQLite / PostgreSQL (configurable through .env)
+- Composer for PHP dependencies
+- Node.js and npm for frontend assets
+- Vite for front-end build tooling
+- Tailwind CSS and Alpine.js
+- Blade templating engine
+- Laravel Breeze for authentication workflows
+- Local public storage for uploaded files
+
+Project Structure:
+The repository is organized in a standard Laravel application layout:
+
+app/
+  - Http/Controllers/
+      - Admin/
+      - Student/
+      - Auth/
+  - Models/
+      - User.php
+      - Material.php
+
+bootstrap/
+config/
+database/
+  - migrations/
+  - seeders/
+public/
+  - assets/
+  - images/
+resources/
+  - views/
+  - css/
+  - js/
+routes/
+storage/
+tests/
+
+Important files:
+- README.md: project overview and developer setup instructions
+- composer.json: PHP package and Laravel application configuration
+- package.json: JavaScript frontend dependencies and Vite scripts
+- .env.example: environment variable template
+- phpunit.xml: test configuration
+- Dockerfile: container setup if Docker is used
+
+Default Roles and Access:
+The system includes admin and student roles:
+
+Admin:
+- Access to administrative dashboard and management pages.
+- Manages student accounts.
+- Uploads and maintains resources.
+- Reviews all library content.
+
+Student:
+- Access to student dashboard.
+- Views department-focused content.
+- Uses browsing, preview, and download capabilities.
+- Manages their own account profile.
+
+Authentication and Authorization:
+- User authentication is handled using Laravel authentication flows.
+- Role-based middleware restricts access to protected pages.
+- Unauthenticated users can access public pages like welcome, login, and registration screens.
+
+Data and Storage:
+The project stores uploaded files in public storage locations so they can be displayed and downloaded.
+
+Common storage locations:
+- Materials: storage/app/public/materials/
+- Profile photos: storage/app/public/profile-photos/
+
+A storage link is normally created using:
+php artisan storage:link
+
+This makes uploaded files accessible via the web through the /storage/ path.
+
+Database Model Overview:
+The app uses database tables for users and course/library materials. Core entities include:
+- users
+- materials
+- password reset records
+- sessions
+
+The user table includes fields like:
+- role
+- department
+- profile photo path
+
+Materials are stored with metadata such as:
+- title
+- department
+- file type
+- description
+- upload file path
+
+Installation and Setup:
+1. Clone the repository.
+2. Install PHP dependencies:
+   composer install
+3. Install JavaScript dependencies:
+   npm install
+4. Create your environment file:
+   cp .env.example .env
+5. Generate an application key:
+   php artisan key:generate
+6. Configure your database credentials in .env.
+7. Run database migrations:
+   php artisan migrate
+8. Create the storage link:
+   php artisan storage:link
+9. Start the frontend development server or build assets:
+   npm run dev
+   or
+   npm run build
+10. Start the Laravel app:
+   php artisan serve
+
+Then open the app in a browser at:
+http://localhost:8000
+
+Environment Configuration:
+The project uses environment variables to configure the app. The .env file should include database settings and application-related values.
+
+Typical database example:
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=namitembo_e_library
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+
+Important Notes for Contributors:
+- Keep access control rules enforced at both route and controller level.
+- Validate uploaded file types and size restrictions.
+- Ensure uploaded academic files are stored in the correct public storage path.
+- Preserve role-specific behavior when modifying controller logic.
+- Use migrations when changing the database schema.
+- Run tests after making changes.
+
+Testing:
+The project includes PHPUnit/Pest-based tests. Run tests using:
+php artisan test
+
+Frontend Assets:
+The app uses Vite for frontend assets. Custom styling and JavaScript are maintained in the public and resources directories.
+
+Typical frontend setup:
+- resources/css/app.css
+- resources/js/app.js
+- public/assets/css/custom.css
+- public/assets/js/custom.js
+
+This is part of the app’s branded user interface for the college.
+
+How the App Works in Practice:
+1. An administrator logs in.
+2. The admin manages college users and uploads learning resources.
+3. Students log in and access only resources relevant to their department.
+4. Students can preview or download materials and maintain personal profiles.
+5. The system acts as a central digital library for the institution.
+
+Summary:
+Namitembo is a Laravel-based e-library and resource management application for a technical college. It helps staff organize academic materials, manage students, and control access based on roles, while giving students a simple, modern way to access learning resources.
+
+This project is a complete web application that combines administrative management, academic resource sharing, secure authentication, user profiles, and responsive front-end design.
+
+For more detailed developer instructions, refer to the project README.md file in the repository root.
+
+End of document.
