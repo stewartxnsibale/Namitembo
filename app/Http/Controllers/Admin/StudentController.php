@@ -65,6 +65,7 @@ class StudentController extends Controller
             ],
             'department' => ['required', Rule::in(self::DEPARTMENTS)],
             'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+            'role' => ['nullable', Rule::in(['student', 'admin'])],
             'profile_photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png,gif,webp', 'max:2048'],
             'remove_profile_photo' => ['nullable', 'boolean'],
         ]);
@@ -72,6 +73,7 @@ class StudentController extends Controller
         $student->name = $validated['name'];
         $student->email = $validated['email'];
         $student->department = $validated['department'];
+        $student->role = $validated['role'];
 
         if ($student->isDirty('email')) {
             $student->email_verified_at = null;
