@@ -59,18 +59,6 @@
         </div>
 
         <div class="form-field">
-            <label for="department">Department</label>
-            <select id="department" name="department" class="form-control" required>
-                <option value="">Select your department</option>
-                @foreach ($departments as $dept)
-                    <option value="{{ $dept->id }}" @selected(old('department') == $dept->id)>
-                        {{ $dept->name }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
-
-        <div class="form-field">
             <label for="password_confirmation">Confirm password</label>
             <input id="password_confirmation" class="form-control" type="password" name="password_confirmation"
                 placeholder="Repeat your password" required autocomplete="new-password">
